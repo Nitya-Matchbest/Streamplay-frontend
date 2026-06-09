@@ -1,0 +1,308 @@
+/* Mobile Responsive Overrides for Streamplay */
+@media screen and (max-width: 768px) {
+    /* 1. Global Overflow Fixes */
+    html, body {
+        width: 100%;
+        overflow-x: hidden !important;
+        position: relative;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Header and Container Reset */
+    #streamplay-menu-new.header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid #eaeaea !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+        height: auto !important;
+        padding: 10px 0 !important;
+    }
+
+    #streamplay-menu-new .header-section {
+        padding: 0 !important;
+    }
+
+    #streamplay-menu-new .header-section .container.clearfix {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Logo Styling */
+    #streamplay-menu-new .logo-image {
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 !important;
+        width: auto !important;
+        margin-right: auto !important;
+    }
+
+    #streamplay-menu-new .logo-image a.logo {
+        display: inline-block !important;
+    }
+
+    #streamplay-menu-new .fixed-logo {
+        width: 160px !important;
+        height: auto !important;
+        max-width: 100% !important;
+    }
+
+    /* Hamburger Menu Button */
+    .streamplay-menu .hamburger {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 24px !important;
+        height: 16px !important;
+        position: relative !important;
+        top: 0 !important;
+        right: 0 !important;
+        cursor: pointer !important;
+        z-index: 1000 !important;
+        background: transparent !important;
+    }
+
+    .streamplay-menu #ham span {
+        display: block !important;
+        width: 100% !important;
+        height: 2px !important;
+        background-color: #000000 !important; /* solid black lines */
+        margin: 0 !important;
+        transition: all 0.3s ease-in-out !important;
+    }
+
+    /* Hamburger Active/Toggled State Animation */
+    .streamplay-menu .hamburger.ham-toggle span:nth-of-type(1) {
+        transform: translateY(7px) rotate(45deg) !important;
+    }
+
+    .streamplay-menu .hamburger.ham-toggle span:nth-of-type(2) {
+        opacity: 0 !important;
+    }
+
+    .streamplay-menu .hamburger.ham-toggle span:nth-of-type(3) {
+        transform: translateY(-7px) rotate(-45deg) !important;
+    }
+
+    /* 3. Navigation Dropdown Menu styling */
+    #streamplay-menu-new .nav.nav-menu {
+        display: none !important;
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        background: #ffffff !important;
+        padding: 15px 0 !important;
+        margin-top: 10px !important;
+        border-top: 1px solid #f0f0f0 !important;
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        max-height: 80vh !important;
+        overflow-y: auto !important;
+        z-index: 999 !important;
+    }
+
+    /* Show when toggled */
+    #streamplay-menu-new .nav.nav-menu.nav-active {
+        display: flex !important;
+    }
+
+    #streamplay-menu-new .nav-center {
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 5px !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+    }
+
+    #streamplay-menu-new .nav-tab {
+        color: #1a1a1a !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        padding: 10px 20px !important;
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+        transition: color 0.2s ease !important;
+    }
+
+    #streamplay-menu-new .nav-tab:hover,
+    #streamplay-menu-new .nav-tab.active {
+        color: #7c3aed !important;
+        background: #f8f5fc !important;
+        border-radius: 8px !important;
+    }
+
+    #streamplay-menu-new .nav-tab.active::after {
+        display: none !important;
+    }
+
+    /* Expert Buttons Section */
+    #streamplay-menu-new .expert {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin: 10px 0 0 0 !important;
+        padding: 15px 0 0 0 !important;
+        border-top: 1px solid #f0f0f0 !important;
+    }
+
+    #streamplay-menu-new .expert .request-demo,
+    #streamplay-menu-new .expert #companymenu6,
+    #streamplay-menu-new .expert #sales-header {
+        width: 90% !important;
+        max-width: 280px !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+        display: block !important;
+        font-size: 15px !important;
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
+    }
+
+    /* 4. Hero Banner adjustments for Mobile */
+    .video-banner {
+        margin-top: 60px !important;
+    }
+
+    .amazon-banner .banner-heading h1 {
+        font-size: 26px !important;
+        line-height: 34px !important;
+        text-align: center !important;
+    }
+
+    .amazon-banner .banner-content {
+        padding: 20px 10px !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .amazon-banner .banner-heading h1 span.mob strong {
+        font-size: 26px !important;
+        line-height: 34px !important;
+    }
+
+    .amazon-banner .banner-heading h1 cite {
+        font-size: 15px !important;
+        line-height: 22px !important;
+        margin-top: 10px !important;
+        display: block !important;
+    }
+
+    .banner-left ul {
+        text-align: left !important;
+        display: inline-block !important;
+        margin: 20px 0 !important;
+        padding-left: 20px !important;
+    }
+
+    .banner-left ul li {
+        font-size: 14px !important;
+        line-height: 20px !important;
+    }
+
+    .talk-to-us {
+        margin: 10px auto !important;
+        display: inline-block !important;
+        width: 200px !important;
+    }
+
+    /* 5. Feature cards responsiveness */
+    .player-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .player-container .wrapper {
+        width: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .player-wrapper {
+        width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .player-wrapper h3 {
+        font-size: 22px !important;
+        line-height: 28px !important;
+    }
+
+    .player-wrapper p {
+        font-size: 14px !important;
+        line-height: 22px !important;
+    }
+
+    /* Hide heavy desktop boxes and adjust layout */
+    .animation-box {
+        display: none !important;
+    }
+
+    .mobile-box {
+        display: block !important;
+        width: 100% !important;
+        margin-top: 15px !important;
+    }
+
+    .mobile-box img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+    }
+
+    /* FAQ accordion styling for mobile */
+    .customer-block.flex {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .accordion-wrap {
+        width: 100% !important;
+    }
+
+    /* 6. Footer and other CTAs */
+    .floating-cta {
+        padding: 10px 15px !important;
+    }
+
+    .floating-cta a {
+        font-size: 16px !important;
+        padding: 0 15px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+    }
+
+    /* 7. Force Initial Visibility for Animated Elements on Mobile */
+    .fadeinup1, .fadeinup2, .fadeinup3, .fadeinup4, .fadeinup5, .fadeinup6, .fadeinup7,
+    .fadeinright1, .fadeinright2, .fadeinright3, .fadeinright4,
+    .fadeinleft1, .fadeinleft2, .fadeinleft3, .fadeinleft4,
+    .textup1, .textup2, .textup3, .textup4, .textup5, .textup6 {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

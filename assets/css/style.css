@@ -1,4 +1,4 @@
-﻿/* =============================================================
+/* =============================================================
    StreamPlay — style.css
    Single unified stylesheet for all pages.
 
@@ -444,7 +444,7 @@ button:focus {
 }
 
 .button.talk-to-us::after {
-  content: url(assets/images/new-home/arrow-right.svg);
+  content: url(../images/new-home/arrow-right.svg);
   line-height: 0;
   display: inline-block;
   opacity: 0;
@@ -494,7 +494,7 @@ button:focus {
 }
 
 .button.secondary.outline::after {
-  content: url(assets/images/new-home/arrow-right.svg);
+  content: url(../images/new-home/arrow-right.svg);
 }
 
 .button.secondary.alt {
@@ -2712,7 +2712,7 @@ li.dropmenu-new.dropmenu-active .submenu {
   position: absolute;
   width: 20px;
   height: 20px;
-  background-image: url(assets/images/new-home/tick.svg);
+  background-image: url(../images/new-home/tick.svg);
   background-size: cover;
   left: -30px;
   top: 1px;
@@ -2745,7 +2745,7 @@ li.dropmenu-new.dropmenu-active .submenu {
   height: 20px;
   width: 20px;
   display: inline-block;
-  background-image: url(assets/images/amazon/round.svg);
+  background-image: url(../images/amazon/round.svg);
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
@@ -3193,7 +3193,7 @@ span.santagif::after {
   position: absolute;
   width: 15px;
   height: 15px;
-  background-image: url(assets/images/ott-provider/round.svg);
+  background-image: url(../images/ott-provider/round.svg);
   background-size: cover;
   left: 0;
   top: 6px;
@@ -6246,7 +6246,7 @@ p.swipe.swipe-up {
   position: absolute;
   width: 15px;
   height: 15px;
-  background-image: url(assets/images/grey-tick.svg);
+  background-image: url(../images/grey-tick.svg);
   background-size: cover;
   left: 0;
   top: 6px;
