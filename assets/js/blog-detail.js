@@ -1,6 +1,6 @@
 // Blog Detail JavaScript
-const API_BASE_URL = 'http://localhost:5000/api';
-const BACKEND_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://streamplay-gaming.onrender.com/api';
+const BACKEND_URL = 'https://streamplay-gaming.onrender.com';
 
 // Get slug from URL
 const urlParams = new URLSearchParams(window.location.search);
