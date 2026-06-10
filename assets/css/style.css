@@ -6920,3 +6920,8 @@ ul.dots { display: inline-flex; }
   padding: 24px 24px !important;
 }
 
+/* Add vertical gap between stacked cards in columns */
+.player-container .wrapper .player-wrapper:not(:last-child) {
+  margin-bottom: 24px !important;
+}
+

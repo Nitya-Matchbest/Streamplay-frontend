@@ -1,7 +1,9 @@
 /* Mobile Responsive Overrides for Streamplay */
 @media screen and (max-width: 768px) {
+
     /* 1. Global Overflow Fixes */
-    html, body {
+    html,
+    body {
         width: 100%;
         overflow-x: hidden !important;
         position: relative;
@@ -22,9 +24,9 @@
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        background: #ffffff !important;
+        background: #000000;
         border-bottom: 1px solid #eaeaea !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
         height: auto !important;
         padding: 10px 0 !important;
     }
@@ -62,8 +64,12 @@
         max-width: 100% !important;
     }
 
+    .contact-page {
+        margin-top: 60px !important;
+    }
+
     /* Hamburger Menu Button */
-    .streamplay-menu .hamburger {
+    .hamburger {
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
@@ -77,25 +83,26 @@
         background: transparent !important;
     }
 
-    .streamplay-menu #ham span {
+    #ham span {
         display: block !important;
         width: 100% !important;
         height: 2px !important;
-        background-color: #000000 !important; /* solid black lines */
+        background-color: #ffffff !important;
+        /* solid white lines */
         margin: 0 !important;
         transition: all 0.3s ease-in-out !important;
     }
 
     /* Hamburger Active/Toggled State Animation */
-    .streamplay-menu .hamburger.ham-toggle span:nth-of-type(1) {
+    .hamburger.ham-toggle span:nth-of-type(1) {
         transform: translateY(7px) rotate(45deg) !important;
     }
 
-    .streamplay-menu .hamburger.ham-toggle span:nth-of-type(2) {
+    .hamburger.ham-toggle span:nth-of-type(2) {
         opacity: 0 !important;
     }
 
-    .streamplay-menu .hamburger.ham-toggle span:nth-of-type(3) {
+    .hamburger.ham-toggle span:nth-of-type(3) {
         transform: translateY(-7px) rotate(-45deg) !important;
     }
 
@@ -316,10 +323,27 @@
     }
 
     /* 7. Force Initial Visibility for Animated Elements on Mobile */
-    .fadeinup1, .fadeinup2, .fadeinup3, .fadeinup4, .fadeinup5, .fadeinup6, .fadeinup7,
-    .fadeinright1, .fadeinright2, .fadeinright3, .fadeinright4,
-    .fadeinleft1, .fadeinleft2, .fadeinleft3, .fadeinleft4,
-    .textup1, .textup2, .textup3, .textup4, .textup5, .textup6 {
+    .fadeinup1,
+    .fadeinup2,
+    .fadeinup3,
+    .fadeinup4,
+    .fadeinup5,
+    .fadeinup6,
+    .fadeinup7,
+    .fadeinright1,
+    .fadeinright2,
+    .fadeinright3,
+    .fadeinright4,
+    .fadeinleft1,
+    .fadeinleft2,
+    .fadeinleft3,
+    .fadeinleft4,
+    .textup1,
+    .textup2,
+    .textup3,
+    .textup4,
+    .textup5,
+    .textup6 {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;

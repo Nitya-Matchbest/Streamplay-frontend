@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
@@ -10,13 +10,37 @@
    <link rel="icon" href="assets/images/streamplay-icon.png" type="image/png">
    <link rel="stylesheet" href="https://use.typekit.net/nuo5dim.css">
    <link rel="stylesheet" href="assets/css/style.css">
+   <link rel="stylesheet" href="assets/css/mobile-responsive.css">
 </head>
-<body>
+<body class="streamplay-menu">
 
-   <header class="contact-header">
-      <a href="index.html" class="logo-link" aria-label="StreamPlay home">
-         <img width="280" height="54" src="assets/images/streamplay-logo-transparent.png" alt="StreamPlay">
-      </a>
+   <!-- Header Starts -->
+   <header class="header" id="streamplay-menu-new">
+      <div class="header-section">
+         <div class="container clearfix">
+            <div class="logo-image" style="margin-right:auto;">
+               <a class="logo" href="index.html">
+                  <img width="280" height="54" src="assets/images/streamplay-logo-transparent.png" class="fixed-logo" alt="StreamPlay Logo">
+               </a>
+            </div>
+            
+            <div class="hamburger" id="ham">
+               <span></span>
+               <span></span>
+               <span></span>
+            </div>
+            <nav class="nav nav-menu" id="nav">
+               <div class="nav-center">
+                  <a id="home-nav" class="nav-tab" href="index.html" title="Home">Home</a>
+                  <a id="blog-nav" class="nav-tab" href="blogs.html" title="Blog">Blog</a>
+               </div>
+               <div class="expert" style="margin-left:auto;">
+                  <a rel="nofollow" id="companymenu6" class="request-demo" href="contact.html" title="Contact Sales">Contact Sales</a>
+                  <a rel="nofollow" id="sales-header" href="contact.html" title="Request Demo">Request Demo</a>
+               </div>
+            </nav>
+         </div>
+      </div>
    </header>
 
    <main class="contact-page">
@@ -147,6 +171,18 @@
                submitBtn.textContent = 'Send';
             });
          });
+      })();
+   </script>
+   <script>
+      (function() {
+         var ham = document.getElementById('ham');
+         if (ham) {
+            ham.addEventListener('click', function() {
+               var nav = document.getElementById('nav');
+               if (nav) nav.classList.toggle('nav-active');
+               ham.classList.toggle('ham-toggle');
+            });
+         }
       })();
    </script>
 </body>
