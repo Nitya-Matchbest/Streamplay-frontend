@@ -6880,3 +6880,43 @@ ul.dots { display: inline-flex; }
         margin-left: 0 !important;
     }
 }
+
+/* =============================================================
+   CUSTOM OVERRIDES: Monetization Section Cards (6 cards)
+   ============================================================= */
+.mixed-bg .player-wrapper .player-child {
+  background-image: none !important;
+  background: var(--sp-purple) !important;
+  border-color: var(--sp-purple) !important;
+  transition: background 0.3s ease, border-color 0.3s ease !important;
+}
+
+.mixed-bg .player-wrapper:hover .player-child,
+.mixed-bg .player-wrapper.active .player-child {
+  background-image: none !important;
+  background: var(--sp-purple) !important;
+  border-color: var(--sp-purple) !important;
+}
+
+/* Force text and underlines inside the 6 cards to be white across all states and viewports */
+.mixed-bg .player-wrapper h5,
+.mixed-bg .player-wrapper h5 * {
+  color: #ffffff !important;
+}
+
+.mixed-bg .player-wrapper p,
+.mixed-bg .player-wrapper p * {
+  color: #ffffff !important;
+}
+
+.mixed-bg .player-wrapper h5::after {
+  background: #ffffff !important;
+}
+
+/* Maintain consistent padding and prevent layout shift */
+.mixed-bg .player-wrapper .player-child,
+.mixed-bg .player-wrapper:hover .player-child,
+.mixed-bg .player-wrapper.active .player-child {
+  padding: 24px 24px !important;
+}
+
