@@ -1448,8 +1448,8 @@ input.hs-button.primary.large,
 .open .faq-arrow::after,
 .open .faq-arrow::before                  { background: #fff !important; }
 
-/* Feature tick marks */
-.player-wrapper ul li::before             { filter: hue-rotate(-145deg) saturate(1.6) brightness(0.95); }
+/* Feature bullet marks — recolored to brand purple #491275 */
+.player-wrapper ul li::before             { filter: brightness(0) saturate(100%) invert(11%) sepia(98%) saturate(2800%) hue-rotate(268deg) brightness(80%) contrast(130%); }
 .central-left ul li svg path              { fill: var(--sp-purple) !important; }
 
 /* Mid CTA section */
@@ -2687,7 +2687,7 @@ li.dropmenu-new.dropmenu-active .submenu {
 /* Hero feature list with tick marks */
 .section-title ul {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 35px !important;
@@ -3174,22 +3174,24 @@ span.santagif::after {
   border-top-right-radius: 0;
 }
 
-/* Feature list inside card */
+/* Feature list inside card — CSS Grid for uniform row gaps */
 .player-wrapper ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 12px;
+  column-gap: 10px;
+  align-items: start;
   margin: 20px 0 10px 0;
 }
 
 .player-wrapper ul li {
   font-size: 18px;
-  width: 50%;
+  width: 100%;          /* full width inside grid cell */
   line-height: 28px;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 0;     /* row-gap handles spacing */
   padding-left: 25px;
+  align-self: start;    /* don't stretch to fill tall rows */
 }
 
 .player-wrapper ul li::before {
