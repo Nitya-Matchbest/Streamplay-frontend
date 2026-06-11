@@ -6824,13 +6824,13 @@ ul.dots { display: inline-flex; }
 #streamplay-menu-new .expert .request-demo,
 #streamplay-menu-new .expert #companymenu6 {
     background: transparent !important;
-    border: 2px solid #7c3aed !important;
-    color: #7c3aed !important;
+    border: 2px solid #491275 !important;
+    color: #491275 !important;
 }
 
 #streamplay-menu-new .expert .request-demo:hover,
 #streamplay-menu-new .expert #companymenu6:hover {
-    background: #7c3aed !important;
+    background: #491275 !important;
     color: white !important;
 }
 
@@ -6843,16 +6843,16 @@ ul.dots { display: inline-flex; }
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-block;
-    background: #7c3aed !important;
-    border: 2px solid #7c3aed !important;
+    background: #491275 !important;
+    border: 2px solid #491275 !important;
     color: white !important;
 }
 
 #streamplay-menu-new .expert #sales-header:hover {
-    background: #6d28d9 !important;
-    border-color: #6d28d9 !important;
+    background: #3a0e5c !important;
+    border-color: #3a0e5c !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    box-shadow: 0 4px 12px rgba(73, 18, 117, 0.4);
 }
 
 /* Responsive Navigation */
