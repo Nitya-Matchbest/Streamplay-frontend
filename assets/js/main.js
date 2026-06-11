@@ -1,4 +1,4 @@
-﻿/**
+/**
  * StreamPlay - Main JavaScript
  * Consolidated from inline scripts in index.html
  * ============================================================
@@ -761,3 +761,193 @@ function loadScript(code, url, callback) {
     document.head.appendChild(script);
   }
 }
+
+/* ============================================================
+   21. MOBILE MONETIZATION CAROUSEL DOTS
+   Handles scroll snapping dots indicator.
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.querySelector('.player-container.mixed-bg');
+  if (!container) return;
+
+  var cards = container.querySelectorAll('.player-wrapper');
+  if (cards.length === 0) return;
+
+  // Create dots container
+  var dotsContainer = document.createElement('div');
+  dotsContainer.className = 'carousel-dots';
+  dotsContainer.style.display = 'none'; // Hidden on desktop by default
+  container.parentNode.insertBefore(dotsContainer, container.nextSibling);
+
+  var dots = [];
+  cards.forEach(function (card, index) {
+    var dot = document.createElement('span');
+    dot.className = 'dot' + (index === 0 ? ' active' : '');
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
+
+    // Click to scroll to card
+    dot.addEventListener('click', function () {
+      var cardWidth = card.offsetWidth;
+      var gap = 16;
+      var scrollLeft = index * (cardWidth + gap);
+      container.scrollTo({
+        left: scrollLeft,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Fallback active dot detection if IntersectionObserver is not supported
+  function updateActiveDotScroll() {
+    var scrollLeft = container.scrollLeft;
+    var cardWidth = cards[0].offsetWidth;
+    var gap = 16;
+    var activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+    activeIndex = Math.max(0, Math.min(activeIndex, cards.length - 1));
+
+    dots.forEach(function (dot, index) {
+      dot.classList.toggle('active', index === activeIndex);
+    });
+  }
+
+  // Use IntersectionObserver for perfect detection of active snap item
+  if ('IntersectionObserver' in window) {
+    var observerOptions = {
+      root: container,
+      threshold: 0.6
+    };
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var cardIndex = Array.prototype.indexOf.call(cards, entry.target);
+          if (cardIndex !== -1) {
+            dots.forEach(function (dot, idx) {
+              dot.classList.toggle('active', idx === cardIndex);
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    cards.forEach(function (card) {
+      observer.observe(card);
+    });
+  } else {
+    container.addEventListener('scroll', updateActiveDotScroll);
+  }
+});
+
+/* ============================================================
+   22. MOBILE PLATFORM OWNERSHIP CAROUSEL & COVERFLOW EFFECT
+   Handles scroll snapping, dots, and active card animations
+   for the Complete Platform Ownership section.
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.querySelector('.player-container.boxsection.light');
+  if (!container) return;
+
+  var cards = container.querySelectorAll('.player-wrapper.box');
+  if (cards.length === 0) return;
+
+  // Create dots container
+  var dotsContainer = document.createElement('div');
+  dotsContainer.className = 'carousel-dots ownership-dots';
+  dotsContainer.style.display = 'none'; // CSS shows it on mobile via .ownership-dots
+  container.parentNode.insertBefore(dotsContainer, container.nextSibling);
+
+
+  var dots = [];
+  cards.forEach(function (card, index) {
+    var dot = document.createElement('span');
+    dot.className = 'dot' + (index === 0 ? ' active' : '');
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
+
+    // Click to scroll to card
+    dot.addEventListener('click', function () {
+      var cardWidth = card.offsetWidth;
+      var gap = 20; // gap + margins
+      var scrollLeft = index * (cardWidth + gap);
+      
+      // Calculate scroll offset considering center alignment
+      var containerWidth = container.offsetWidth;
+      var targetScroll = scrollLeft - (containerWidth - cardWidth) / 2;
+
+      container.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Track active card and apply 3D effect class
+  function highlightActiveCard(activeIndex) {
+    cards.forEach(function (card, index) {
+      if (index === activeIndex) {
+        card.classList.add('active-card');
+      } else {
+        card.classList.remove('active-card');
+      }
+    });
+
+    dots.forEach(function (dot, index) {
+      dot.classList.toggle('active', index === activeIndex);
+    });
+  }
+
+  // Fallback active card detection on scroll
+  function updateActiveCardScroll() {
+    var scrollLeft = container.scrollLeft;
+    var containerWidth = container.offsetWidth;
+    var cardWidth = cards[0].offsetWidth;
+    var gap = 20;
+    
+    // Find card closest to viewport center
+    var containerCenter = scrollLeft + containerWidth / 2;
+    var activeIndex = 0;
+    var minDistance = Infinity;
+
+    cards.forEach(function (card, index) {
+      var cardCenter = index * (cardWidth + gap) + cardWidth / 2;
+      var distance = Math.abs(containerCenter - cardCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        activeIndex = index;
+      }
+    });
+
+    highlightActiveCard(activeIndex);
+  }
+
+  // IntersectionObserver for precise detection of active card
+  if ('IntersectionObserver' in window) {
+    var observerOptions = {
+      root: container,
+      threshold: 0.5,
+      rootMargin: '0px -10% 0px -10%' // Restrict focus region to center
+    };
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var cardIndex = Array.prototype.indexOf.call(cards, entry.target);
+          if (cardIndex !== -1) {
+            highlightActiveCard(cardIndex);
+          }
+        }
+      });
+    }, observerOptions);
+
+    cards.forEach(function (card) {
+      observer.observe(card);
+    });
+  } else {
+    container.addEventListener('scroll', updateActiveCardScroll);
+  }
+
+  // Initial trigger
+  setTimeout(updateActiveCardScroll, 100);
+});
+

@@ -2898,6 +2898,8 @@ cite {
   cite {
     font-size: 29px;
     line-height: 40px;
+    display: block;
+    text-align: center;
   }
 
   .amazon-banner .banner-heading h1 {
@@ -2918,6 +2920,8 @@ cite {
   cite {
     font-size: 28px;
     line-height: 40px;
+    display: block;
+    text-align: center;
   }
 }
 

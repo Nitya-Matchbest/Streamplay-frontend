@@ -1,5 +1,61 @@
 /* Mobile Responsive Overrides for Streamplay */
+
+/* ─── Keyframe Animations for Monetization Cards (Mobile) ─── */
+
+@keyframes monCardSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes monGlowPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
+    }
+    50% {
+        box-shadow: 0 0 24px 6px rgba(138, 43, 226, 0.35);
+    }
+}
+
+@keyframes monIconFloat {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50%       { transform: translateY(-6px) scale(1.06); }
+}
+
+@keyframes monShimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes monBorderSpin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes monImageReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Hide mobile-only hero image on desktop */
+.hero-img-mob {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
+
+
 
     /* 1. Global Overflow Fixes */
     html,
@@ -231,9 +287,20 @@
     .amazon-banner .banner-heading h1 cite {
         font-size: 15px !important;
         line-height: 22px !important;
-        margin-top: 10px !important;
+        margin: 10px auto 0 !important;
         display: block !important;
+        width: 100% !important;
+        text-align: center !important;
     }
+
+    /* Ensure the whole h1 and for-mobile span are centered */
+    .amazon-banner .banner-heading h1,
+    .amazon-banner .banner-heading h1 span.for-mobile {
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
 
     .banner-left ul {
         text-align: left !important;
@@ -252,6 +319,37 @@
         display: inline-block !important;
         width: 200px !important;
     }
+
+    /* ── Hero image mobile positioning ── */
+    /* Hide the desktop right-column image on mobile */
+    .banner-image {
+        display: none !important;
+    }
+
+    /* Show the in-flow mobile hero image (between subtitle and bullet list) */
+    .hero-img-mob {
+        display: block !important;
+        width: 100% !important;
+        padding: 14px 0 10px !important;
+    }
+
+    .hero-img-mob img {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 14px !important;
+    }
+
+    /* Revert the flex-column ordering we added previously (no longer needed) */
+    .amazon-banner .banner-heading.clearfix {
+        display: block !important;
+    }
+
+    .amazon-banner .banner-content {
+        order: unset !important;
+    }
+
 
     /* 5. Feature cards responsiveness */
     .player-container {
@@ -347,5 +445,430 @@
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
+    }
+
+    /* 8. Monetization Cards Carousel (Mobile Only) */
+    .player-container.mixed-bg {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        gap: 16px !important;
+        padding: 20px 15px !important;
+        margin: 0 !important;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .player-container.mixed-bg::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .player-container.mixed-bg .player-wrapper {
+        flex: 0 0 85% !important;
+        width: 85% !important;
+        scroll-snap-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .carousel-dots {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin: 20px 0 10px 0;
+        width: 100%;
+    }
+    
+    .carousel-dots .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .carousel-dots .dot.active {
+        background-color: var(--sp-purple);
+        transform: scale(1.2);
+        width: 20px;
+        border-radius: 4px;
+    }
+
+    /* 9. Platform Ownership Cards Coverflow Carousel (Mobile Only) */
+    .player-container.boxsection.light {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        gap: 0 !important;
+        padding: 24px 0 36px 0 !important;
+        margin: 0 !important;
+        align-items: stretch !important;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .player-container.boxsection.light::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Flatten wrapper divs out of the flex flow */
+    .player-container.boxsection.light > .wrapper {
+        display: contents !important;
+        width: auto !important;
+        margin: 0 !important;
+    }
+    
+    /* Each card is a flex item in the horizontal scroll */
+    .player-container.boxsection.light > .wrapper > .player-wrapper.box,
+    .player-container.boxsection.light .player-wrapper.box {
+        flex: 0 0 82% !important;
+        width: 82% !important;
+        min-width: 82% !important;
+        max-width: 82% !important;
+        margin: 0 9px !important;
+        scroll-snap-align: center !important;
+        box-sizing: border-box !important;
+        opacity: 0.6 !important;
+        transform: scale(0.9) !important;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                    box-shadow 0.4s ease,
+                    border-color 0.4s ease !important;
+        will-change: transform, opacity;
+        background: #141414 !important;
+        border: 1px solid #2a2a2a !important;
+        box-shadow: none !important;
+        border-radius: 18px !important;
+    }
+
+    /* First and last cards get extra leading/trailing space */
+    .player-container.boxsection.light > .wrapper:first-child > .player-wrapper.box:first-child {
+        margin-left: calc(9% + 9px) !important;
+    }
+
+    .player-container.boxsection.light > .wrapper:last-child > .player-wrapper.box:last-child {
+        margin-right: calc(9% + 9px) !important;
+    }
+
+    /* Active card pops forward */
+    .player-container.boxsection.light .player-wrapper.box.active-card {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        box-shadow: 0 8px 32px rgba(138, 43, 226, 0.30), 0 0 0 1px var(--sp-purple) !important;
+        border-color: var(--sp-purple) !important;
+    }
+
+    /* Card inner content stays readable */
+    .player-container.boxsection.light .player-wrapper.box .player-child {
+        padding: 24px 20px 20px !important;
+        text-align: center !important;
+    }
+
+    .player-container.boxsection.light .player-wrapper.box .player-child h3 {
+        font-size: 20px !important;
+        line-height: 28px !important;
+        color: #fff !important;
+    }
+
+    .player-container.boxsection.light .player-wrapper.box .player-child p {
+        font-size: 14px !important;
+        line-height: 22px !important;
+        color: #cbcbcb !important;
+    }
+
+    .player-container.boxsection.light .mobile-box {
+        display: block !important;
+        padding: 0 16px 20px !important;
+    }
+
+    .player-container.boxsection.light .mobile-box img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 10px !important;
+        margin: 0 !important;
+    }
+
+    /* Image wrappers inside ownership cards */
+    .player-container.boxsection.light .w80,
+    .player-container.boxsection.light .w90,
+    .player-container.boxsection.light .w70,
+    .player-container.boxsection.light .w98 {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 0 16px 20px !important;
+    }
+
+    .player-container.boxsection.light .w80 img,
+    .player-container.boxsection.light .w90 img,
+    .player-container.boxsection.light .w70 img,
+    .player-container.boxsection.light .w98 img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 10px !important;
+        margin: 0 !important;
+    }
+
+    /* ── Equal card heights: all cards same height, no empty tail ── */
+    .player-container.boxsection.light {
+        align-items: stretch !important;
+    }
+
+    .player-container.boxsection.light .player-wrapper.box {
+        min-height: 400px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .player-container.boxsection.light .player-wrapper.box .player-child {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* ── Card 3 (#element2): text ABOVE, customization.png BELOW via CSS order ── */
+
+    /* Make player-child a flex column so order works */
+    .player-container.boxsection.light #element2 .player-child {
+        position: static !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        border-radius: 0 !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* h3 and p stay at top (order 1 & 2) */
+    .player-container.boxsection.light #element2 .player-child h3 {
+        order: 1 !important;
+    }
+    .player-container.boxsection.light #element2 .player-child p {
+        order: 2 !important;
+    }
+
+    /* Push animation-box (customization.png) below text */
+    .player-container.boxsection.light #element2 .animation-box {
+        order: 3 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        position: static !important;
+        width: 100% !important;
+        flex: 1 !important;
+        padding: 0 16px 16px !important;
+        justify-content: flex-end !important;
+    }
+
+    /* Hide cursor.png arrows */
+    .player-container.boxsection.light #element2 .animation-box img.arrows {
+        display: none !important;
+    }
+
+    /* customization.png fills the available height below text */
+    .player-container.boxsection.light #element2 .animation-box img.m40b {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        flex: 1 !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        margin: 0 !important;
+        border-radius: 10px !important;
+    }
+
+    /* Hide owner.png (profile image) */
+    .player-container.boxsection.light #element2 .mobile-box {
+        display: none !important;
+    }
+
+    /* Hide logo1.png (w98) */
+    .player-container.boxsection.light #element2 .w98 {
+        display: none !important;
+    }
+
+    /* ── Card 1 (#element1): fill empty space below text with brand1.png ── */
+
+    /* The card itself is flex column; player-child has text, mobile-box has image */
+    .player-container.boxsection.light #element1 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .player-container.boxsection.light #element1 .player-child {
+        flex: 0 0 auto !important;
+    }
+
+    /* mobile-box grows to fill all remaining card height */
+    .player-container.boxsection.light #element1 > .mobile-box,
+    .player-container.boxsection.light #element1 .mobile-box {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 16px 16px !important;
+        margin: 0 !important;
+    }
+
+    /* brand1.png stretches to fill the mobile-box height */
+    .player-container.boxsection.light #element1 .mobile-box img {
+        flex: 1 !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        border-radius: 10px !important;
+        margin: 0 !important;
+    }
+
+    /* ── Card 2 (#element4): fill empty space below text with graph.png ── */
+
+    .player-container.boxsection.light #element4 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .player-container.boxsection.light #element4 .player-child {
+        flex: 0 0 auto !important;
+    }
+
+    /* w90 wrapper grows to fill remaining height */
+    .player-container.boxsection.light #element4 .w90 {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+    }
+
+    /* mobile-box inside w90 also stretches */
+    .player-container.boxsection.light #element4 .w90 .mobile-box {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 16px 16px !important;
+        margin: 0 !important;
+    }
+
+    /* graph.png fills the available height */
+    .player-container.boxsection.light #element4 .w90 .mobile-box img {
+        flex: 1 !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        border-radius: 10px !important;
+        margin: 0 !important;
+    }
+
+    /* Ownership section dots — show them */
+    .ownership-dots.carousel-dots {
+        display: flex !important;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       10. MONETIZATION CARDS ANIMATIONS (Mobile Only)
+           .hover-sec → .player-container.no-bg.mixed-bg
+           These are the 6 revenue stream cards only.
+    ───────────────────────────────────────────────────────── */
+
+    /* Staggered entry: each card slides up + fades in */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item {
+        animation: monCardSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+        position: relative !important;
+        overflow: hidden !important;
+        border-radius: 18px !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    }
+
+    /* Stagger delays so cards pop in one after another */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(1) { animation-delay: 0.05s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(2) { animation-delay: 0.15s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(3) { animation-delay: 0.25s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(4) { animation-delay: 0.35s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(5) { animation-delay: 0.45s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(6) { animation-delay: 0.55s; }
+
+    /* Active (first) card glows with purple pulse */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item.active {
+        animation: monCardSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both,
+                   monGlowPulse 2.8s ease-in-out 0.6s infinite !important;
+        border: 1px solid rgba(138, 43, 226, 0.55) !important;
+    }
+
+    /* Press feedback when user taps a card */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:active {
+        transform: scale(0.97) !important;
+        box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4) !important;
+    }
+
+    /* Shimmer sweep on the card title (h5) */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item .player-child h5 {
+        background: linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #c084fc 40%,
+            #ffffff 60%,
+            #c084fc 100%
+        ) !important;
+        background-size: 200% auto !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        animation: monShimmer 3.5s linear infinite !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        line-height: 26px !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Hover image floats in with a reveal animation */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item .hover-image {
+        animation: monImageReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-delay: inherit;
+    }
+
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item .hover-image img {
+        animation: monIconFloat 3.5s ease-in-out infinite !important;
+        will-change: transform !important;
+    }
+
+    /* Stagger the float so each card's image bobs at a different phase */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(1) .hover-image img { animation-delay: 0s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(2) .hover-image img { animation-delay: 0.4s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(3) .hover-image img { animation-delay: 0.8s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(4) .hover-image img { animation-delay: 1.2s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(5) .hover-image img { animation-delay: 1.6s; }
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item:nth-child(6) .hover-image img { animation-delay: 2.0s; }
+
+    /* Description text slides in smoothly */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item .hidden-section p {
+        animation: monCardSlideUp 0.5s ease both;
+        animation-delay: 0.3s;
+        font-size: 13px !important;
+        line-height: 20px !important;
+        color: rgba(255, 255, 255, 0.82) !important;
+    }
+
+    /* Subtle top-border accent line on each card */
+    .player-container.no-bg.boxsection.mixed-bg .player-wrapper.hover-item::before {
+        content: '' !important;
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 15% !important;
+        width: 70% !important;
+        height: 2px !important;
+        background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.7), transparent) !important;
+        border-radius: 0 0 4px 4px !important;
+        animation: monShimmer 2.5s linear infinite !important;
+        background-size: 200% auto !important;
+        z-index: 1 !important;
     }
 }
