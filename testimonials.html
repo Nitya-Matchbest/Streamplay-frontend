@@ -105,7 +105,7 @@
 
 <button id="backToTop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path d="M11,6.2l-5.3,4.6c-0.4,0.4-1.1,0.3-1.4-0.1c-0.4-0.4-0.3-1.1,0.1-1.4l7-6c0.4-0.3,0.9-0.3,1.3,0l7,6c0.4,0.4,0.5,1,0.1,1.4 c-0.4,0.4-1,0.5-1.4,0.1L13,6.2V20c0,0.6-0.4,1-1,1c-0.6,0-1-0.4-1-1V6.2z"></path></svg></button>
 <!-- Header Ends -->
-
+<!-- =========================================
      TESTIMONIALS SECTION
      ========================================= -->
 <section class="testimonials-section section_container" style="margin-top: 100px; padding-top: 40px; min-height: 80vh;">
@@ -644,7 +644,7 @@
                             </div>
                             <p class="testimonial-quote">"${t.quote}"</p>
                             <div class="testimonial-author">
-                               <img src="${t.authorImage}" alt="${t.authorName}" loading="lazy">
+                               <img src="${t.authorImage?.startsWith('/') ? 'https://streamplay-gaming.onrender.com' : ''}${t.authorImage}" alt="${t.authorName}" loading="lazy">
                                <div>
                                   <strong>${t.authorName}</strong>
                                   <span>${t.authorRole}</span>
