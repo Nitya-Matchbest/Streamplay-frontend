@@ -645,7 +645,7 @@
                             </div>
                             <p class="testimonial-quote">"${t.quote}"</p>
                             <div class="testimonial-author">
-                               <img src="${t.authorImage?.startsWith('/') ? 'https://streamplay-gaming.onrender.com' : ''}${t.authorImage}" alt="${t.authorName}" loading="lazy">
+                               <img src="${t.authorImage ? t.authorImage.replace('http://localhost:5000', 'https://streamplay-gaming.onrender.com') : ''}" alt="${t.authorName}" loading="lazy">
                                <div>
                                   <strong>${t.authorName}</strong>
                                   <span>${t.authorRole}</span>
