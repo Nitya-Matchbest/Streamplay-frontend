@@ -899,3 +899,137 @@
         z-index: 1 !important;
     }
 }
+
+/* =============================================================
+   MARKETING AUDIT IMPROVEMENTS — MOBILE RESPONSIVE
+   ============================================================= */
+
+/* ── Hero V2 Mobile ── */
+@media screen and (max-width: 768px) {
+  .hero-badge-row {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .hero-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+  .hero-title-v2 {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+  }
+  .hero-cta-row {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+  .hero-stat-pills {
+    gap: 8px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .hero-stat-pill {
+    min-width: 80px;
+    padding: 8px 12px;
+  }
+  .hero-stat-pill strong { font-size: 16px; }
+  .hero-stat-pill span { font-size: 10px; }
+}
+
+/* ── Logo Ticker Mobile ── */
+@media screen and (max-width: 768px) {
+  .logo-ticker-label { font-size: 10px; }
+  .logo-pill { font-size: 12px; padding: 6px 14px; }
+}
+
+/* ── Stats Counter Mobile ── */
+@media screen and (max-width: 1025px) {
+  .stats-counter-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media screen and (max-width: 768px) {
+  .stats-counter-section { padding: 40px 0; }
+  .stats-counter-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stats-counter-num { font-size: 36px; }
+  .stats-counter-item { padding: 20px 14px; border-radius: 12px; }
+  .stats-counter-label { font-size: 12px; }
+}
+
+/* ── Case Studies Mobile ── */
+@media screen and (max-width: 1025px) {
+  .case-studies-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+@media screen and (max-width: 768px) {
+  .case-studies-section .section-head { margin-bottom: 24px; }
+  .case-study-metric { font-size: 40px; }
+  .case-study-card { padding: 20px; }
+  .case-study-card h3 { font-size: 18px; }
+}
+
+/* ── Testimonials Mobile ── */
+@media screen and (max-width: 1025px) {
+  .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+@media screen and (max-width: 768px) {
+  .testimonial-card { padding: 20px; }
+  .testimonial-card-featured::after { display: none; }
+  .testimonial-quote { font-size: 13px; }
+}
+
+/* ── Security Mobile ── */
+@media screen and (max-width: 1025px) {
+  .security-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 768px) {
+  .security-grid { grid-template-columns: 1fr; gap: 12px; }
+  .security-card { padding: 18px; }
+  .security-badges { gap: 8px; }
+  .security-badge { padding: 6px 14px; }
+}
+
+/* ── ROI Calculator Mobile ── */
+@media screen and (max-width: 900px) {
+  .roi-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media screen and (max-width: 768px) {
+  .roi-title { font-size: 26px; }
+  .roi-result-amount { font-size: 44px; }
+  .roi-result-card { padding: 28px 20px; }
+  .roi-slider-row { flex-wrap: wrap; }
+  .roi-slider-val { min-width: 60px; }
+}
+
+/* ── Pricing Mobile ── */
+@media screen and (max-width: 1025px) {
+  .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+  .pricing-card-popular { transform: none; }
+  .pricing-card-popular:hover { transform: translateY(-6px); }
+}
+@media screen and (max-width: 768px) {
+  .pricing-card { padding: 24px 20px; }
+  .pricing-tagline { min-height: auto; }
+}
+
+/* ── Video Modal Mobile ── */
+@media screen and (max-width: 768px) {
+  .video-modal-box {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .video-modal-title { font-size: 18px; }
+  .video-modal-embed iframe { height: 200px; }
+}
+
+/* ── Mobile Nav Hamburger ── */
+@media screen and (max-width: 768px) {
+  .nav-center .nav-dropdown { display: none; }
+  .nav-center a#security-nav,
+  .nav-center a#pricing-nav,
+  .nav-center a#blog-nav { display: none; }
+}

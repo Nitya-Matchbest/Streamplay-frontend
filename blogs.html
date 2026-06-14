@@ -19,34 +19,69 @@
 <body class="blog-page">
 
     <header class="header" id="streamplay-menu-new">
-        <div class="header-section">
-            <div class="container clearfix">
-                <div class="logo-image" style="margin-right:auto;">
-                    <a class="logo" href="index.html">
-                        <img width="280" height="54" src="assets/images/streamplay-logo-transparent.png"
-                            class="fixed-logo" alt="StreamPlay Logo">
-                    </a>
-                </div>
+   <div class="header-section" style="width: 100%; padding: 0;">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; width: 100%; position: relative;">
+         <div class="logo-image" style="flex: 0 0 auto; z-index: 101; margin: 0; padding: 0;">
+            <a class="logo" href="index.html" style="display: flex; align-items: center; margin: 0; padding: 0;">
+            <img src="assets/images/streamplay-logo-transparent.png" class="fixed-logo" alt="StreamPlay Logo" style="display: block; margin: 0; width: 140px !important; height: auto !important; min-height: auto !important;">
+            </a>
+         </div>
 
-                <div class="hamburger" id="ham">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav class="nav nav-menu" id="nav">
-                    <div class="nav-center">
-                        <a id="home-nav" class="nav-tab" href="index.html" title="Home">Home</a>
-                        <a id="blog-nav" class="nav-tab active" href="blogs.html" title="Blog">Blog</a>
-                    </div>
-                    <div class="expert" style="margin-left:auto;">
-                        <a rel="nofollow" id="companymenu6" class="request-demo" href="contact.html"
-                            title="Contact Sales">Contact Sales</a>
-                        <a rel="nofollow" id="sales-header" href="contact.html" title="Request Demo">Request Demo</a>
-                    </div>
-                </nav>
+         <div class="hamburger" id="ham">
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+
+         <nav class="nav nav-menu" id="nav" style="display: flex !important; justify-content: flex-end; align-items: center; flex-grow: 1; position: static;">
+            <div class="nav-center" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; gap: 30px; align-items: center; z-index: 100; margin-top: -20px;">
+               <a id="home-nav" class="nav-tab" href="index.html" title="Home">Home</a>
+               <a id="pricing-nav" class="nav-tab" href="pricing.html" title="Pricing">Pricing</a>
+               <a id="blog-nav" class="nav-tab active" href="blogs.html" title="Blog">Blog</a>
+               <a id="testimonials-nav" class="nav-tab" href="testimonials.html" title="Testimonials">Testimonials</a>
             </div>
-        </div>
-    </header>
+            <div class="expert" style="display: flex; gap: 15px; align-items: center; z-index: 101;">
+               <a rel="nofollow" id="companymenu6" class="request-demo" href="contact.html" title="Contact Sales">Contact Sales</a>
+               <a rel="nofollow" id="sales-header" href="contact.html" title="Request Demo">Request Demo</a>
+            </div>
+         </nav>
+
+         <div class="floating-cta floating-book-a-call-btn">
+         <a rel="nofollow" id="sales-header" href="contact.html" title="Request Demo">Request Demo
+         <svg class="arroww" width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0_950_447b" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="21">
+        <rect x="0.769531" y="0.799805" width="21.9307" height="19.5674" fill="#D9D9D9"></rect>
+        </mask>
+        <g mask="url(#mask0_950_447b)">
+        <path d="M1.13672 10.5835L20.3058 10.5835" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M12.5918 2.87061L20.3049 10.5837L12.5918 18.2968" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+        </svg>
+         </a>
+         </div>
+      </div>
+   </div>
+
+   <!-- Mobile Nav Menu -->
+   <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+   <div class="mobile-nav-panel" id="mobile-nav-panel">
+      <div class="mobile-nav-header">
+         <img width="160" height="31" src="assets/images/streamplay-logo-transparent.png" alt="StreamPlay Logo">
+         <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-list">
+         <li><a href="index.html">Home</a></li>
+         <li><a href="pricing.html">Pricing</a></li>
+         <li><a href="blogs.html">Blog</a></li>
+         <li><a href="testimonials.html">Testimonials</a></li>
+         <li class="mob-cta-row">
+            <a href="contact.html" class="mob-cta-primary">Request Demo</a>
+            <a href="contact.html" class="mob-cta-secondary">Contact Sales</a>
+         </li>
+      </ul>
+   </div>
+
+</header>
 
     <main class="blog-main">
         <section class="blog-hero">

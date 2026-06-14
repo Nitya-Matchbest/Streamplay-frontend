@@ -951,3 +951,182 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(updateActiveCardScroll, 100);
 });
 
+
+/* ============================================================
+   SECTION 21: MARKETING AUDIT — NEW INTERACTIVE COMPONENTS
+   ── Stats Counter (IntersectionObserver animate-on-scroll)
+   ── ROI Calculator (real-time slider)
+   ── Video Demo Modal (hero CTA)
+   ── Mobile Nav Panel (hamburger slide-in + accordion)
+   ============================================================ */
+
+/* ── 21a. Animated Stats Counter ── */
+(function initStatsCounter() {
+  var items = document.querySelectorAll('.stats-counter-item');
+  if (!items.length) return;
+
+  function animateCounter(el) {
+    var valEl  = el.querySelector('.counter-val');
+    if (!valEl) return;
+    var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    var start  = 0;
+    var duration = 1800;
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      // Ease-out cubic
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.round(eased * target);
+      valEl.textContent = current.toLocaleString();
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        valEl.textContent = target.toLocaleString();
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var counterObserver = new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    items.forEach(function(item) {
+      counterObserver.observe(item);
+    });
+  } else {
+    items.forEach(animateCounter);
+  }
+})();
+
+
+/* ── 21b. ROI Calculator ── */
+(function initROICalculator() {
+  var usersSlider  = document.getElementById('roi-users');
+  var spendSlider  = document.getElementById('roi-spend');
+  var usersVal     = document.getElementById('roi-users-val');
+  var spendVal     = document.getElementById('roi-spend-val');
+  var resultEl     = document.getElementById('roi-result');
+
+  if (!usersSlider || !spendSlider || !resultEl) return;
+
+  function formatCurrency(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000)    return '$' + (n / 1000).toFixed(0) + 'K';
+    return '$' + n.toLocaleString();
+  }
+
+  function updateROI() {
+    var users = parseInt(usersSlider.value, 10);
+    var spend = parseInt(spendSlider.value, 10);
+    var revenue = users * spend;
+
+    usersVal.textContent = users.toLocaleString();
+    spendVal.textContent = '$' + spend;
+    resultEl.textContent = formatCurrency(revenue);
+
+    // Pulse animation on result
+    resultEl.style.transform = 'scale(1.05)';
+    setTimeout(function() { resultEl.style.transform = 'scale(1)'; }, 200);
+  }
+
+  usersSlider.addEventListener('input', updateROI);
+  spendSlider.addEventListener('input', updateROI);
+  updateROI(); // Initialize
+})();
+
+
+/* ── 21c. Video Demo Modal (Hero "Watch Demo" CTA) ── */
+window.openDemoModal = function(e) {
+  if (e) e.preventDefault();
+  var overlay = document.getElementById('video-modal-overlay');
+  var iframe  = document.getElementById('hero-demo-iframe');
+  if (!overlay) return;
+
+  // Load iframe src from data-src (prevents autoplay before open)
+  if (iframe && iframe.getAttribute('data-src') && !iframe.src) {
+    iframe.src = iframe.getAttribute('data-src');
+  }
+
+  overlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeDemoModal = function() {
+  var overlay = document.getElementById('video-modal-overlay');
+  var iframe  = document.getElementById('hero-demo-iframe');
+  if (!overlay) return;
+
+  overlay.classList.remove('is-open');
+  document.body.style.overflow = '';
+
+  // Stop video by clearing src
+  if (iframe) {
+    var originalSrc = iframe.getAttribute('data-src');
+    iframe.src = '';
+    iframe.setAttribute('data-src', originalSrc);
+  }
+};
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    window.closeDemoModal();
+  }
+});
+
+
+/* ── 21d. Mobile Nav Panel ── */
+(function initMobileNav() {
+  var ham       = document.getElementById('ham');
+  var panel     = document.getElementById('mobile-nav-panel');
+  var overlay   = document.getElementById('mobile-nav-overlay');
+  var closeBtn  = document.getElementById('mobile-nav-close');
+
+  if (!ham || !panel) return;
+
+  function openPanel() {
+    panel.classList.add('is-open');
+    if (overlay) overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePanel() {
+    panel.classList.remove('is-open');
+    if (overlay) overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  ham.addEventListener('click', openPanel);
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+  if (overlay)  overlay.addEventListener('click', closePanel);
+
+  // Mobile accordion (Products / Solutions sub-menus)
+  var accToggles = panel.querySelectorAll('.mob-acc-toggle');
+  accToggles.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var li = btn.closest('.mob-accordion');
+      if (!li) return;
+      // Close siblings
+      panel.querySelectorAll('.mob-accordion.is-open').forEach(function(el) {
+        if (el !== li) el.classList.remove('is-open');
+      });
+      li.classList.toggle('is-open');
+    });
+  });
+
+  // Close panel when a link inside is clicked
+  panel.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      setTimeout(closePanel, 150);
+    });
+  });
+})();
