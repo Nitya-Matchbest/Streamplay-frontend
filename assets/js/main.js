@@ -178,15 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* Hamburger toggle */
-  var ham = document.getElementById('ham');
-  if (ham) {
-    ham.addEventListener('click', function () {
-      var nav = document.getElementById('nav');
-      if (nav) nav.classList.toggle('nav-active');
-      ham.classList.toggle('ham-toggle');
-    });
-  }
+  /* The old hamburger toggle that added .nav-active has been removed */
 })();
 
 
