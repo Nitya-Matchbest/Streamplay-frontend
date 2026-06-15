@@ -1122,3 +1122,24 @@ document.addEventListener('keydown', function(e) {
     });
   });
 })();
+
+
+(function initFeaturesCarousel() {
+  var prev = document.getElementById('feat-prev');
+  var next = document.getElementById('feat-next');
+  var container = document.getElementById('features-player-container');
+  if (!prev || !next || !container) return;
+
+  var scrollAmount = function() {
+    var wrapper = container.querySelector('.player-wrapper');
+    return wrapper ? wrapper.offsetWidth + parseInt(window.getComputedStyle(wrapper).marginRight || 0) : window.innerWidth;
+  };
+
+  next.addEventListener('click', function() {
+    container.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+  });
+
+  prev.addEventListener('click', function() {
+    container.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+  });
+})();
