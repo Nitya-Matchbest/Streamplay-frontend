@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function check() {
       for (var i = 0; i < elements.length; i++) {
         var top    = elements[i].getBoundingClientRect().top;
-        var offset = top + 250;
+        var offset = top + 50;
 
         if (offset < winHeight) {
           elements[i].classList.add('section-animated');
