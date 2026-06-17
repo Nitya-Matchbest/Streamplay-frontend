@@ -1,6 +1,7 @@
 /* Blog Page Styles */
-
-body.blog-page {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+body.blog-page,
+body.blog-detail-page {
     background-color: #010F29 !important;
 }
 
@@ -195,20 +196,24 @@ body.blog-page {
 
 /* Hero Section */
 .blog-hero {
-    background: #822AEE;
+    background: #010F29;
     padding: 80px 0 60px;
     margin-top: 70px;
     text-align: center;
     color: white;
+    font-family: 'Inter', sans-serif;
 }
 
 .blog-hero h1 {
+    font-family: 'Inter', sans-serif;
     font-size: 48px;
     font-weight: 900 !important;
     margin-bottom: 20px;
 }
 
 .blog-hero p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400 !important;
     font-size: 18px;
     color: white !important;
     opacity: 0.9;
@@ -251,7 +256,7 @@ body.blog-page {
 /* Blog Grid */
 .blog-content {
     padding: 40px 0 80px;
-    background: #0a0a0a;
+    background: #010F29;
 }
 
 .blog-grid {
