@@ -1,5 +1,9 @@
 /* Blog Page Styles */
 
+body.blog-page {
+    background-color: #010F29 !important;
+}
+
 /* Text Selection Color */
 ::selection {
     background: #667eea;
@@ -95,22 +99,12 @@
 }
 
 #streamplay-menu-new .nav-tab:hover {
-    color: #9d6bc5 !important;
+    color: #822AEE !important;
 }
 
 #streamplay-menu-new .nav-tab.active {
-    color: #9d6bc5 !important;
+    color: #822AEE !important;
     font-weight: 600;
-}
-
-#streamplay-menu-new .nav-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 20px;
-    right: 20px;
-    height: 2px;
-    background: #9d6bc5;
 }
 
 /* Ensure buttons stay on the right */
@@ -201,7 +195,7 @@
 
 /* Hero Section */
 .blog-hero {
-    background: linear-gradient(135deg, #491275 0%, #2c0c4a 100%);
+    background: #822AEE;
     padding: 80px 0 60px;
     margin-top: 70px;
     text-align: center;
@@ -210,7 +204,7 @@
 
 .blog-hero h1 {
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 900 !important;
     margin-bottom: 20px;
 }
 
