@@ -1044,7 +1044,7 @@ window.openDemoModal = function(e) {
   if (!overlay) return;
 
   // Load iframe src from data-src (prevents autoplay before open)
-  if (iframe && iframe.getAttribute('data-src') && !iframe.src) {
+  if (iframe && iframe.getAttribute('data-src')) {
     iframe.src = iframe.getAttribute('data-src');
   }
 
