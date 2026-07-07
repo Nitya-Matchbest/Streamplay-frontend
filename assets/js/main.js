@@ -329,7 +329,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   for (var i = 0; i < accordions.length; i++) {
     accordions[i].addEventListener('click', function () {
-      this.parentElement.classList.toggle('open');
+      var parent = this.parentElement;
+      var isOpen = parent.classList.contains('open');
+      
+      // Close all accordions
+      for (var j = 0; j < accordions.length; j++) {
+        accordions[j].parentElement.classList.remove('open');
+      }
+      
+      // If the clicked one wasn't open before, open it now
+      if (!isOpen) {
+        parent.classList.add('open');
+      }
     });
   }
 })();
