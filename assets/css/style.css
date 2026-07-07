@@ -415,7 +415,7 @@ li.no-margin   { margin: 0 !important; }
   margin: 20px 0 0;
   position: relative;
   z-index: 1;
-  box-shadow: 8px 9px 27px 0 rgba(5, 122, 171, 0.2);
+  box-shadow: none;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -426,13 +426,11 @@ button:focus {
 
 .button:hover {
   background: #f56f01;
-  box-shadow: 0 4px 8px 0 rgba(5, 122, 171, 0.2),
-              0 6px 20px 0 rgba(5, 122, 171, 0.19);
   transition: 0.5s box-shadow ease;
 }
 
 .button:hover::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 /* Talk to us variant */
@@ -1288,7 +1286,7 @@ input.hs-button.primary.large,
   justify-content: center !important;
   gap: 10px !important;
   border: none !important;
-  box-shadow: 0 8px 32px rgba(130,42,238,0.4) !important;
+  box-shadow: none !important;
   transition: all 0.3s ease !important;
 }
 
@@ -1307,7 +1305,6 @@ input.hs-button.primary.large,
 .demo-talk-sales:hover,
 .video-modal-cta:hover {
   background: linear-gradient(135deg, #9747ff, #6d1fb5) !important;
-  box-shadow: 0 12px 40px rgba(130,42,238,0.55) !important;
   transform: translateY(-2px) !important;
 }
 
@@ -6998,7 +6995,6 @@ ul.dots { display: inline-flex; }
     background: #3a0e5c !important;
     border-color: #3a0e5c !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(73, 18, 117, 0.4);
 }
 
 /* Responsive Navigation */
