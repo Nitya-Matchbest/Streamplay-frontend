@@ -8182,11 +8182,13 @@ header.header .container {
 
 #streamplay-menu-new .nav-center {
     position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    left: 45% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
     margin: 0 !important;
     display: flex !important;
     gap: 30px !important;
+    z-index: 9999 !important;
 }
 
 #streamplay-menu-new .expert {
@@ -8365,6 +8367,8 @@ header.header .container {
     justify-content: center !important;
     line-height: 1 !important;
     padding: 5px 15px !important;
+    z-index: 9999 !important;
+    position: relative !important;
 }
 
 /* Global Font Override */
